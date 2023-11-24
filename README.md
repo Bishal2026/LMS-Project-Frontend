@@ -1,18 +1,48 @@
 # LMS (Learing Mengement System )
 
 1.  Clone the project
-    
+
     - git clone https://github.com/Bishal2026/LMS-Project-Frontend.git
- 
+
 2.  Move into the directory
 
-     - cd LMS-Project
+    - cd LMS-Project
 
 3.  Install Depandences
 
-    - npm i 
-      i 
-4. Run the server
+    - npm i
+      i
 
--  npm run dev
+4.  Run the server
 
+- npm run dev
+
+## ALl setup for project
+
+### All Depandences
+
+    npm i @reduxjs/toolkit react-router-dom react-icons react-chartjs-2 chart.js daisyui axios react-hot-toast @tailwindcss/line-clamp react-redux
+
+### TailWinds Setup
+
+    1.  install Depandenecs
+
+    - npm install -D tailwindcss
+    - npx tailwindcss init
+
+    2. Create tailwind config file
+
+    ... npx tailwindcss init Add extanstion =>
+     "./src/**/*.{html,js,jsx,ts,tsx}" ...
+
+    3. Add tailwind dir in index.js top of the file.
+
+     ...
+
+            @tailwind base;
+
+            @tailwind components;
+
+            @tailwind utilities;
+
+    ...
