@@ -46,3 +46,12 @@
             @tailwind utilities;
 
     ...
+
+    4. some more setup in tailwindcss
+
+    ...
+        addnpx tailwindcss init Add extanstion = ./index.html
+
+    npm install -D tailwindcss postcss autoprefixer
+
+     npx taliwindcss init -p
