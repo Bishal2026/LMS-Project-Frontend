@@ -86,7 +86,7 @@ function handelLogout(e){
                             <Link to="/login" >Login</Link>
                         </button>
                         <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full bg-red-500'>
-                            <Link to="/login" >Singup</Link>
+                            <Link to="/signup" >Singup</Link>
                         </button>
                     
                     </div>
