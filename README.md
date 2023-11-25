@@ -11,7 +11,7 @@
 3.  Install Depandences
 
     - npm i
-      i
+      
 
 4.  Run the server
 
@@ -50,8 +50,12 @@
     4. some more setup in tailwindcss
 
     ...
-        addnpx tailwindcss init Add extanstion = ./index.html
+        add npx tailwindcss init Add extanstion = ./index.html
 
     npm install -D tailwindcss postcss autoprefixer
 
      npx taliwindcss init -p
+
+5. To active in daisyui and line-clamp
+
+    - plugins: [require('daisyui'),require('@tailwindcss/line-clamp')],
