@@ -5,67 +5,82 @@ import { Link, useNavigate } from "react-router-dom";
 import HomeLayout from "../Layouts/HomeLayout";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import {createAccount} from '../redux/slices/AuthSlice'
+import { createAccount } from "../redux/slices/AuthSlice";
 
 function Signup() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [previewImage, setPreviewImage] = useState("");
   const [signupData, setSignupData] = useState({
     fullName: "",
     email: "",
     password: "",
-    avatar: ""
-});
+    avatar: "",
+  });
 
-function handleUserInput(e) {
-    const {name, value} = e.target;
+  function handleUserInput(e) {
+    const { name, value } = e.target;
     setSignupData({
-        ...signupData,
-        [name]: value
-    })
-}
+      ...signupData,
+      [name]: value,
+    });
+  }
 
-function getImage(event) {
+  function getImage(event) {
     event.preventDefault();
     // getting the image
     const uploadedImage = event.target.files[0];
 
-    if(uploadedImage) {
-        setSignupData({
-            ...signupData,
-            avatar: uploadedImage
-        });
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(uploadedImage);
-        fileReader.addEventListener("load", function () {
-            console.log(this.result);
-            setPreviewImage(this.result);
-        })
+    if (uploadedImage) {
+      setSignupData({
+        ...signupData,
+        avatar: uploadedImage,
+      });
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(uploadedImage);
+      fileReader.addEventListener("load", function () {
+        // console.log(this.result);
+        setPreviewImage(this.result);
+      });
     }
-}
-async function createNewAccount(event) {
+  }
+  async function createNewAccount(event) {
     event.preventDefault();
-    if(!signupData.email || !signupData.password || !signupData.fullName || !signupData.avatar) {
-        toast.error("Please fill all the details");
-        return;
+    if (
+      !signupData.email ||
+      !signupData.password ||
+      !signupData.fullName ||
+      !signupData.avatar
+    ) {
+      toast.error("Please fill all the details");
+      return;
     }
 
     // checking name field length
-    if(signupData.fullName.length < 5) {
-        toast.error("Name should be atleast of 5 characters")
-        return;
+    if (signupData.fullName.length < 5) {
+      toast.error("Name should be atleast of 5 characters");
+      return;
     }
     // checking valid email
-    if(!signupData.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-        toast.error("Invalid email id");
-        return;
+    if (
+      !signupData.email.match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+    ) {
+      toast.error("Invalid email id");
+      return;
     }
     // checking password validation
-    if(!signupData.password.match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)) {
-        toast.error("Password should be 6 - 16 character long with atleast a number and special character");
-        return;
+    if (
+      !signupData.password.match(
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+      )
+    ) {
+      toast.error(
+        "Password should be 6 - 16 character long with atleast a number and special character"
+      );
+      return;
     }
 
     const formData = new FormData();
@@ -76,26 +91,25 @@ async function createNewAccount(event) {
 
     // dispatch create account action
     const response = await dispatch(createAccount(formData));
-    if(response?.payload?.success)
-        navigate("/");
+    console.log(response);
+    if (response?.payload?.success) navigate("/");
 
     setSignupData({
-        fullName: "",
-        email: "",
-        password: "",
-        avatar: ""
+      fullName: "",
+      email: "",
+      password: "",
+      avatar: "",
     });
     setPreviewImage("");
-
-
-}
-
+  }
 
   return (
     <HomeLayout>
       <div className="flex overflow-x-auto items-center justify-center h-[100vh]">
         <form
-          action="" onSubmit={createNewAccount} noValidate
+          action=""
+          onSubmit={createNewAccount}
+          noValidate
           className="flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]"
         >
           <h1 className="text-center text-2xl font-bold">Registration Page</h1>
