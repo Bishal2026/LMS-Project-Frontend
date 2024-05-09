@@ -9,6 +9,8 @@ import CourseList from "./pages/Course/CourseList";
 import Contact from "./pages/Contact";
 import Denied from "./pages/Denied";
 import CourseDescription from "./pages/Course/CourseDescription";
+import RequireAuth from "./components/Auth/Requireauth";
+import CreateCourse from "./pages/Course/CreateCourse";
 
 function App() {
   return (
@@ -21,6 +23,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/courses" element={<CourseList />} />
         <Route path="/course/description" element={<CourseDescription />} />
+
+        <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
+          <Route path="/courses/create" element={<CreateCourse />} />
+        </Route>
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/denied" element={<Denied />} />
       </Routes>
