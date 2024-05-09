@@ -18,7 +18,7 @@ function HomePage() {
             I read you most of the topic and also some skilled and Quailfied
             facultied.
           </p>
-          <div className="space-x-6 sm:flex flex-col gap-4">
+          <div className="space-x-6 ">
             <Link to="/courses">
               <button className=" bg-yellow-500 px-5 py-3 rounded-md font-semibold text-lg cursor-pointer hover:bg-yellow-600 transition-all ease-in-out duration-500 ">
                 Explore courses
