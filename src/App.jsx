@@ -7,6 +7,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import CourseList from "./pages/Course/CourseList";
 import Contact from "./pages/Contact";
+import Denied from "./pages/Denied";
+import CourseDescription from "./pages/Course/CourseDescription";
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/courses" element={<CourseList />} />
+        <Route path="/course/description" element={<CourseDescription />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/denied" element={<Denied />} />
       </Routes>
     </>
   );
