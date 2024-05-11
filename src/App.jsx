@@ -13,6 +13,9 @@ import RequireAuth from "./components/Auth/Requireauth";
 import CreateCourse from "./pages/Course/CreateCourse";
 import UserProfile from "./pages/User/UserProfile";
 import EditProfile from "./pages/User/EditProfile";
+import Checkout from "./pages/Payment/Checkout";
+import Displaylectures from "./pages/Dashboard/Displaylectures";
+import Addlecture from "./pages/Dashboard/Addlecture";
 
 function App() {
   return (
@@ -28,6 +31,8 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
           <Route path="/courses/create" element={<CreateCourse />} />
+
+          <Route path="/course/addlecture" element={<Addlecture />} />
         </Route>
 
         <Route path="/contact" element={<Contact />} />
@@ -36,6 +41,9 @@ function App() {
         <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/user/editprofile" element={<EditProfile />} />
+          <Route path="/checkout" element={<Checkout />} />
+
+          <Route path="/course/displaylecture" element={<Displaylectures />} />
         </Route>
       </Routes>
     </>
